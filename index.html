@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes app</title>
+    <link rel="stylesheet" href="css/styles.min.css">
+    <script src="app.js" defer></script>
+</head>
+    <header id="title">
+        NOTES APP <p>You have <span id="no_of_notes">100</span> Notes</p>
+    </header>
+    <main>
+        <div id="addNote__formContainer">
+            <form id="addNote__form">
+                <input type="text" id="addNote__noteTitle" placeholder="Note title">
+                <textarea id="addNote__noteDescr" placeholder="Write your note here.." rows="6"></textarea>
+                <button id="addNote__btn">ADD NOTE</button>
+            </form>
+        </div>
+        <div id="noteView">
+            <form id="viewNote__form">
+                <textarea id="viewNote__noteTitle">This is going to be the note title</textarea>
+                <textarea id="viewNote__noteDescr" rows="6">The note description is going to be displayed here, All with the ability to edit it</textarea>
+            </form>
+        </div>
+        <div id="notes_container"></div>
+    </main>
+    <footer>
+        <div class="container">
+            <div id="toggle_addNote">
+                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus" class="svg-inline--fa fa-plus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99H192v-144c0-17.69 14.33-32.01 32-32.01s32 14.32 32 32.01v144h144C417.7 224 432 238.3 432 256z"></path></svg>
+            </div>
+            Copyright &copy; 2022 Faraji Kajubu
+        </div>
+    </footer>
+</body>
+</html>

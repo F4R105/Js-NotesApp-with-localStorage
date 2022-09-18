@@ -1,0 +1,299 @@
+body{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    --color: #0a643a;
+    --darker: #074629;
+    --lighter: #119256;
+    --title-height: 70px;
+    background-color: var(--color);
+    background-color: white;
+
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        
+        &:focus{
+            outline: none;
+        }
+    }
+
+    input, button{
+        border: none;
+    }
+
+    button{
+        cursor: pointer;
+    }
+}
+
+header#title{
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    width: 100vw;
+    height: var(--title-height);
+    background-color: var(--color);
+
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white;
+    box-shadow: 0 0 5px 5px rgba(black,0.3);
+    display: flex;align-items: center;justify-content: center; flex-direction: column;
+
+    p{
+        font-size: 0.8rem;
+    }
+}
+
+main{
+    position: relative;
+}
+
+main #addNote__formContainer{
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    background-color: rgba(white,0.5);
+    display: flex;align-items: center;justify-content: center;
+    display: none;
+    padding: 1em;
+
+    form#addNote__form {
+        padding: 1em;
+        width: 100%;
+        max-width: 400px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 0 5px 5px rgba(black,0.1);
+        transform: scale(0);
+        transition: transform 0.2s ease;
+    }
+
+    form#addNote__form textarea,form input, form button{
+        display: block;
+        width: 100%;
+    }
+
+    input#addNote__noteTitle{
+        font-size: 1.2rem;
+        padding: 0.5em;
+        border-bottom: 2px solid grey;
+    }
+
+    textarea#addNote__noteDescr{
+        resize: vertical;
+        font-family: inherit;
+        font-size: 1.2rem;
+        padding: 0.5em;
+        border: none;
+        min-height: 200px;
+    }
+
+    button#addNote__btn{
+        padding: 1em;
+        margin-top: 1em;
+        font-size: 1rem;
+        color: white;
+        cursor: pointer;
+        background-color: var(--color);
+        transition: background-color 0.2s;
+
+        &:hover{
+            background-color: var(--darker);
+        }
+    }
+}
+
+main #noteView{
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    background-color: rgba(white,0.8);
+    display: flex;align-items: center;justify-content: center;
+    display: none;
+    padding: 1em;
+
+    form#viewNote__form {
+        padding: 1em;
+        width: 100%;
+        max-width: 400px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 0 5px 5px rgba(black,0.1);
+        // transform: scale(0);
+        transition: transform 0.2s ease;
+    }
+
+    textarea{
+        display: block;
+        width: 100%;
+        font-family: inherit;
+        padding: 0.5em;
+        border: none;
+    }
+
+    textarea#viewNote__noteTitle{
+        resize: none;       
+        font-size: 1.2rem;
+        font-weight: bold;
+        padding: 0.5em;
+        border: none;
+    }
+
+    textarea#viewNote__noteDescr{
+        resize: vertical;
+        font-size: 1.2rem;
+        min-height: 200px;
+        color: grey;
+    }
+}
+
+main #notes_container{
+    padding-top: calc(var(--title-height) + 20px);
+    padding-left: 1em;
+    padding-right: 1em;
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    gap: 1.3em;
+
+    .note{
+        height: fit-content;
+        padding: 0.5em;
+        border-radius: 5px;
+        box-shadow: 0 0 5px 5px rgba(black,0.05);
+        transform: translateY(0);
+        transition: transform 0.2s ease;
+        cursor: pointer;
+        width: 23.5%;
+
+        &:hover{
+            box-shadow: 0 0 5px 5px rgba(black,0.1);
+            transform: translateY(-0.2em);
+        }
+
+        @media screen and (max-width: 1000px) {
+            width: 31%;
+        }
+
+        @media screen and (max-width: 700px) {
+            width: 48%;
+        }
+
+        @media screen and (max-width: 560px) {
+            width: 100%;
+        }
+    }
+
+    .content{
+        color: rgb(43, 43, 43);
+        
+        .title{
+            font-weight: bold;
+            font-size: 1.1rem;
+
+            display: -webkit-box;
+            overflow: hidden;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
+
+        .descr{
+            font-size: 0.9rem;
+            color: grey;
+            padding-top: 0.5em;
+
+            display: -webkit-box;
+            overflow: hidden;
+            -webkit-line-clamp: 5;
+            -webkit-box-orient: vertical;
+        }
+    }
+
+    .actions{
+        margin-top: 1em;
+        display: flex;
+        justify-content: end;
+        // outline: 2px solid red;
+
+        button{
+            font-size: 1.1rem;
+            padding: 0.2em 1em;
+            color: white;
+            transition: background-color 0.2s ease;
+            transition: opacity 0.2s ease;
+        }
+
+        button.readMore__btn{
+            outline:2px solid var(--color);
+            color: var(--color);
+            border-radius: 3px;
+            
+            &:hover{
+                outline: 2px solid white;
+                background-color: var(--color);
+                color: white;
+            }
+        }
+
+        button.deleteNote__btn{
+            background-color: rgb(199, 44, 44);
+            opacity: 0.3;
+            transform: scale(0.8);
+            border-radius: 1000px;
+            // outline: 2px solid green;
+            
+            &:hover{
+                opacity: 1;
+            }
+        }
+    }
+}
+
+footer{
+    margin-top: auto;
+    text-align: center;
+    color: rgba(202, 202, 202, 0.514);
+    padding: 0.3em;
+    background-color: var(--darker);
+
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+
+    .container{
+        max-width: 1440px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    #toggle_addNote{
+        width: 60px;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        position: absolute;
+        right: 10px;
+        top: -100px;
+        box-shadow: 0 0 5px 5px rgba(black,0.1);
+        display: flex;align-items: center;justify-content: center;
+        background-color: var(--color);
+        transition: transform 0.2s ease;
+        cursor: pointer;
+
+        svg{
+            width: 40px;
+            color: white;
+        }
+
+        &:hover{
+            transform: scale(1.1);
+        }
+    }
+}
